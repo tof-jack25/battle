@@ -1,29 +1,55 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
+$player = $_POST['player'];
+print_r($player);
+
+$playerName = $player['name'];
+echo $playerName . "<br>";
+
+$attaque = $player['attaque'];
+echo $attaque . "<br>";
+
+$mana = $player['mana'];
+echo $mana . "<br>";
+
+$sante = $player['sante'];
+echo $sante . "<br>";
+
+$adversaire = $_POST['adversaire'];
+print_r($adversaire);
+
+$adversaireName = $adversaire['name'];
+echo $adversaireName . "<br>";
+
+$adversaireAttaque = $adversaire['attaque'];
+echo $adversaireAttaque . "<br>";
+
+$adversaireMana = $adversaire['mana'];
+echo $adversaireMana . "<br>";
+
+$adversaireSante = $adversaire['sante'];
+echo $adversaireSante . "<br>";
+
 ?>
 
 <html lang="fr">
+
 <head>
     <title>Battle</title>
     <link rel="stylesheet" href="public/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-            integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
-            crossorigin="anonymous"></script>
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 </head>
 
 <body>
-<div class="container">
-    <audio id="fight-song" src="fight.mp3"></audio>
-    <audio id="hadoudken-song" src="Haduken.mp3"></audio>
-    <audio id="fatality-song" src="fatality.mp3"></audio>
-    <h1 class="animate__animated animate__rubberBand">Battle</h1>
+    <div class="container">
+        <audio id="fight-song" src="fight.mp3"></audio>
+        <audio id="hadoudken-song" src="Haduken.mp3"></audio>
+        <audio id="fatality-song" src="fatality.mp3"></audio>
+        <h1 class="animate__animated animate__rubberBand">Battle</h1>
         <div id="prematch">
             <form id='formFight' action="index.php" method="post">
                 <div>
@@ -71,133 +97,128 @@ require_once __DIR__ . '/vendor/autoload.php';
                 </div>
                 <div class="row mt-2">
                     <div class="d-flex justify-content-center">
-                        <input id="fight" type="submit" value="FIGHT">
+                        <button type="button" class="btn btn-success btn-lg">Fight</button>
                     </div>
                 </div>
             </form>
         </div>
-    <div id="match" class="row gx-5">
-        <h2>Match</h2>
-        <div class="col-6 ">
-            <div class="position-relative float-end">
-                <img id="player" src="https://api.dicebear.com/6.x/lorelei/svg?flip=false&seed=test"
-                     alt="Avatar"
-                     class="avatar float-end">
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        <div id="match" class="row gx-5">
+            <h2>Match</h2>
+            <div class="col-6 ">
+                <div class="position-relative float-end">
+                    <img id="player" src="https://api.dicebear.com/6.x/lorelei/svg?flip=false&seed=test" alt="Avatar" class="avatar float-end">
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 
-                </span>
-                <ul>
-                    <li>Name :</li>
-                    <li>Attaque :</li>
-                    <li>Mana :</li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-6" id="adversaire">
-            <div class="position-relative float-start">
-                <img src="https://api.dicebear.com/6.x/lorelei/svg?flip=true&seed=test2"
-                     alt="Avatar"
-                     class="avatar">
-                <span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger">
-
-                </span>
-                <ul>
-                    <li>Name :</li>
-                    <li>Attaque :</li>
-                    <li>Mana :</li>
-                </ul>
-            </div>
-        </div>
-        <div id="combats">
-            <h2>Combat</h2>
-            <ul>
-
-                <li>
-                    <i class="fa-solid fa-khanda p-1"></i> test
-                </li>
-
-            </ul>
-            <form id='actionForm' action="index.php" method="post">
-                <div class="d-flex justify-content-center">
-                    <input id="attaque" name="attaque" type="submit" value="Attaquer">
-                    <input name="soin" type="submit" value="Se soigner">
+                    </span>
+                    <ul>
+                        <li>Name :</li>
+                        <li>Attaque :</li>
+                        <li>Mana :</li>
+                    </ul>
                 </div>
-                <div class="d-flex justify-content-center">
-                    <input id="restart" name="restart" type="submit" value="Stopper le combat">
+            </div>
+            <div class="col-6" id="adversaire">
+                <div class="position-relative float-start">
+                    <img src="https://api.dicebear.com/6.x/lorelei/svg?flip=true&seed=test2" alt="Avatar" class="avatar">
+                    <span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger">
+
+                    </span>
+                    <ul>
+                        <li>Name :</li>
+                        <li>Attaque :</li>
+                        <li>Mana :</li>
+                    </ul>
                 </div>
-            </form>
-        </div>
-        <div id="Resultats">
-            <h1>Résultat</h1>
-            xxxx est le vainqueur !
-            <form class="d-flex justify-content-center" action="" method="post">
-                <input name="restart" type="submit" value="Nouveau combat">
-            </form>
+            </div>
+            <div id="combats">
+                <h2>Combat</h2>
+                <ul>
+
+                    <li>
+                        <i class="fa-solid fa-khanda p-1"></i> test
+                    </li>
+
+                </ul>
+                <form id='actionForm' action="index.php" method="post">
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success">Attaquer</button>
+                        <button type="submit" class="btn btn-success">Se soigner</button>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success">Stopper le combat</button>
+                    </div>
+                </form>
+            </div>
+            <div id="Resultats">
+                <h1>Résultat</h1>
+                xxxx est le vainqueur !
+                <form class="d-flex justify-content-center" action="" method="post">
+                    <button type="submit" class="btn btn-success">Nouveau combat</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        let submitFight = document.querySelector("#fight");
-        if(submitFight) {
-            submitFight.addEventListener("click", function (event) {
-                event.preventDefault();
-                submitFight.classList.add("animate__animated");
-                submitFight.classList.add("animate__rubberBand");
-                setTimeout(function () {
-                    submitFight.classList.remove("animate__rubberBand");
-                }, 1000);
-                let fight_song = document.getElementById("fight-song");
-                fight_song.play();
-                setTimeout(function () {
-                    document.forms["formFight"].submit();
-                }, 500);
-            })
-        }
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let submitFight = document.querySelector("#fight");
+            if (submitFight) {
+                submitFight.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    submitFight.classList.add("animate__animated");
+                    submitFight.classList.add("animate__rubberBand");
+                    setTimeout(function() {
+                        submitFight.classList.remove("animate__rubberBand");
+                    }, 1000);
+                    let fight_song = document.getElementById("fight-song");
+                    fight_song.play();
+                    setTimeout(function() {
+                        document.forms["formFight"].submit();
+                    }, 500);
+                })
+            }
 
-        let submitAttaque = document.querySelector("#attaque");
-        let alreadyPlaySong = false;
-        if(submitAttaque) {
-            submitAttaque.addEventListener("click", function (event) {
-                if(alreadyPlaySong)
-                    return true;
-                event.preventDefault();
-                let player = document.querySelector("#player")
-                player.classList.add("animate__animated");
-                player.classList.add("animate__rubberBand");
-                submitAttaque.classList.add("animate__animated");
-                submitAttaque.classList.add("animate__rubberBand");
-                setTimeout(function () {
-                    submitAttaque.classList.remove("animate__rubberBand");
-                    player.classList.remove("animate__rubberBand");
-                }, 1000);
-                let hadouken_song = document.getElementById("hadoudken-song");
-                hadouken_song.play();
-                alreadyPlaySong = true;
-                setTimeout(function () {
-                    submitAttaque.click();
-                }, 1000);
-            })
-        }
+            let submitAttaque = document.querySelector("#attaque");
+            let alreadyPlaySong = false;
+            if (submitAttaque) {
+                submitAttaque.addEventListener("click", function(event) {
+                    if (alreadyPlaySong)
+                        return true;
+                    event.preventDefault();
+                    let player = document.querySelector("#player")
+                    player.classList.add("animate__animated");
+                    player.classList.add("animate__rubberBand");
+                    submitAttaque.classList.add("animate__animated");
+                    submitAttaque.classList.add("animate__rubberBand");
+                    setTimeout(function() {
+                        submitAttaque.classList.remove("animate__rubberBand");
+                        player.classList.remove("animate__rubberBand");
+                    }, 1000);
+                    let hadouken_song = document.getElementById("hadoudken-song");
+                    hadouken_song.play();
+                    alreadyPlaySong = true;
+                    setTimeout(function() {
+                        submitAttaque.click();
+                    }, 1000);
+                })
+            }
 
-        let submitRestart = document.querySelector("#restart");
-        let alreadyPlaySongRestart = false;
-        if(submitRestart) {
-            submitRestart.addEventListener("click", function (event) {
-                if(alreadyPlaySongRestart)
-                    return true;
-                event.preventDefault();
-                let fatality_song = document.getElementById("fatality-song");
-                fatality_song.play();
-                alreadyPlaySongRestart = true;
-                setTimeout(function () {
-                    submitRestart.click();
-                }, 2000);
-            })
-        }
-    });
-
-</script>
+            let submitRestart = document.querySelector("#restart");
+            let alreadyPlaySongRestart = false;
+            if (submitRestart) {
+                submitRestart.addEventListener("click", function(event) {
+                    if (alreadyPlaySongRestart)
+                        return true;
+                    event.preventDefault();
+                    let fatality_song = document.getElementById("fatality-song");
+                    fatality_song.play();
+                    alreadyPlaySongRestart = true;
+                    setTimeout(function() {
+                        submitRestart.click();
+                    }, 2000);
+                })
+            }
+        });
+    </script>
 </body>
 <style>
     .avatar {
@@ -206,4 +227,5 @@ require_once __DIR__ . '/vendor/autoload.php';
         border-radius: 50%;
     }
 </style>
+
 </html>
